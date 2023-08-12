@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Practically Adopting Human Activity Recognition.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniHAR</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/wands.png">
+
+
+
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Practically Adopting Human Activity Recognition</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://dapowan.github.io/">Huatao Xu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zhoupf.github.io/">Pengfei Zhou</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://personal.ntu.edu.sg/tanrui/">Rui Tan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://personal.ntu.edu.sg/limo/">Mo Li</a><sup>1,3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Nanyang Technological University,</span>
+            <span class="author-block"><sup>2</sup>University of Pittsburgh, </span>
+            <span class="author-block"><sup>3</sup>The Hong Kong University of Science and Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+<!--              <span class="link-block">-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Slides Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa fa-file-image"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/dapowan/UniHAR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="far fa-images"></i>-->
+<!--                  </span>-->
+<!--                  <span>Data</span>-->
+<!--                  </a>-->
+<!--              </span>-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="row justify-content-center">
+      <div class="content col-sm-12 col-md-10 col-lg-6">
+        <!-- Your content goes here -->
+        <img src="./static/images/scenario_major.jpg"
+             class="image-scenario"
+             alt="Interpolate start reference image."/>
+
+        <h4 class="subtitle has-text-centered">
+          Universal human activity recognition scenario.
+        </h4>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Can we have a universal framework that supports applying human activity recognition (HAR) models across different user groups of real-world diversities, and with realistic adoption overhead?
+          </p>
+          <p>
+            We present <strong>UniHAR</strong>, a <strong>uni</strong>versal <strong>HAR</strong> framework for mobile devices.
+            To address the challenge of data heterogeneity, we thoroughly study augmenting data with the physics of the IMU sensing process and present a novel adoption of data augmentations for the feature learning.
+          </p>
+          <p>
+            UniHAR is fully prototyped on the mobile platform and introduces low overhead to mobile devices.
+            Extensive comparative experiments demonstrate its superior performance in adapting HAR models across four open datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Video</h2>-->
+<!--        <div class="publication-video">-->
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Overview. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+<!--        <br/>-->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-10 col-lg-8">
+            <img src="./static/images/overview_concise.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">UniHAR overview.</h4>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            UniHAR has two training stages:
+          </p>
+          <ul>
+              <li>
+                <p>
+                  <strong>Feature Extraction. </strong>
+                  All local unlabeled datasets are first augmented to align the distributions of heterogeneous data from various clients.
+                To construct a generalized feature extractor (i.e., the <i>encoder</i>), the cloud server collaborates with all mobile clients to exploit massive augmented unlabeled data.
+                The encoder and decoder are trained on clients individually, which learn the high-level features using self-supervised learning techniques.
+                The cloud server combines local models and obtains a generalized model.
+              </p>
+
+              </li>
+            <li>
+              <p>
+                <strong>Activity Recognition. </strong>
+                Based on the generalized encoder, the server then adopts a small amount of labeled data from source users and trains an activity recognition model.
+                Data augmentation is also integrated to enrich the diversity of labeled data and narrow the distribution gap between the source and target domains.
+                The activity recognizer, including <i>encoder</i>, <i>refiner</i>, and <i>classifier</i>, jointly learn to recognize activity types of labeled IMU data.
+              </p>
+            </li>
+          </ul>
+          <p>
+            After the server dispatches the recognizer, each client utilizes it to classify activities without additional training.
+          </p>
+        </div>
+
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Overview. -->
+
+    <!-- Data augmentation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Physics-Informed Data Augmentation</h2>
+<!--        <br/>-->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-10 col-lg-8">
+            <img src="./static/images/data_aug.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">Data augmentation model.</h4>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.
+          </p>
+          <p>
+            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.
+            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between IMU observations with the underlying physical principles, which is defined as:
+          </p>
+          <p class="definition">
+            <i>"G(&middot;) is a physical embedding of F(&middot;) if G(&middot;) transforms physical states such that the observations from the transformed physical states equal the augmented observations of F(&middot;).
+            "
+            </i>
+          </p>
+          <p>
+            In practice, a mapping F(&middot;) that has a physical embedding G(&middot;) indicates the transition of readings can take place through a physical process in reality.
+            We thus define three types of data augmentation based on the above physical embedding:
+          </p>
+          <ul>
+              <li>
+                <p>
+                  <strong>Complete data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), and F(&middot;) can be fully formulated with original observations and known physical states.
+              </p>
+
+              </li>
+            <li>
+              <p>
+                <strong>Approximate data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), but F(&middot;) involves unknown physical states and can be approximated by a formulation of known states.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Flaky data augmentation</strong>, where we cannot find a physical embedding G(&middot;) to support its mapping F(&middot;).
+              </p>
+            </li>
+          </ul>
+          <p>
+            We refer complete and approximate data augmentations to <strong><em>Physics-Informed Data Augmentations (PIDA)</em></strong>, which both have underlying support of physical embeddings.
+          </p>
+          <p>
+            UniHAR incorporates physics-informed data augmentation methods differently during the two stages of the framework based on their respective characteristics.
+            During the feature extraction stage, UniHAR only employs complete data augmentations to unlabeled data for generalizing the data distributions and avoiding approximation errors at scale.
+            During the feature extraction stage, UniHAR applies both complete and approximate data augmentation to augment labeled data for further data representativeness.
+          </p>
+        </div>
+
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Data augmentation. -->
+
+    <!-- Adoption. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">UniHAR Adoption</h2>
+<!--        <br/>-->
+        <!--/ Interpolating. -->
+
+        <div class="content has-text-justified">
+          <p>
+            In practical applications, UniHAR is a configurable framework that can adapt to two scenarios, i.e., <i>data-decentralized</i> and <i>data-centralized</i> scenarios.
+          </p>
+          <p>
+            In the data-decentralized scenario where raw data transmission is not encouraged, UniHAR collaborates with all users and integrates self-supervised and federated learning techniques to train a generalized feature extraction model using massive and augmented unlabeled data.
+            UniHAR then constructs an activity recognition model using limited but augmented labeled data from source users.
+          </p>
+          <p>
+            In the data-centralized scenario, where raw data transmissions from target users are possible, UniHAR can further leverage adversarial training techniques for improved performance.
+          </p>
+
+        </div>
+
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Adoption. -->
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Please check our paper for more details.
+          </p>
+          <p>
+            <i class="fas fa-hand-point-right"></i> Check <a href="">UniHAR</a>
+            if you are interested in implementing UniHAR with Pytorch.
+          </p>
+          <p>
+            <i class="fas fa-hand-point-right"></i> Check <a href=""> UniHAR Mobile</a>
+            if you are interested in building HAR models on Android devices with Tensorflow lite.
+          </p>
+          <p>
+            <i class="fas fa-hand-point-right"></i> Check our previous work <a href="https://github.com/dapowan/LIMU-BERT-Public" target="_blank">LIMU-BERT</a>
+            if you are interested in self-supervised representation learning for IMU data.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>TBD</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<!--  <script src="./static/js/jquery.min.js">  </script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+</body>
+</html>
