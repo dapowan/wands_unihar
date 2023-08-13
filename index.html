@@ -261,6 +261,11 @@
 
         <!-- Re-rendering. -->
 <!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <div class="content has-text-justified">
+          <p>
+            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.
+          </p>
+        </div>
         <div class="row justify-content-center">
           <div class="content col-sm-12 col-md-10 col-lg-8">
             <img src="./static/images/data_aug.jpg"
@@ -271,11 +276,9 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.
-          </p>
-          <p>
+            Sensor readings are observations from the underlying physical states.
             A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.
-            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between IMU observations with the underlying physical principles, which is defined as:
+            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:
           </p>
           <p class="definition">
             <i>"G(&middot;) is a physical embedding of F(&middot;) if G(&middot;) transforms physical states such that the observations from the transformed physical states equal the augmented observations of F(&middot;).
